@@ -23,8 +23,12 @@ public class MyMain {
     // arithmeticSequence(4) => 9
     // arithmeticSequence(1) => 3
     public static int arithmeticSequence(int n) {
-        // YOUR CODE HERE
-        return -1;
+        if (n == 1){
+            return 3;
+        }
+        else {
+            return arithmeticSequence(n-1) + 2;
+        }
     }
 
     // Write a method that uses recursion to count the number
@@ -38,8 +42,20 @@ public class MyMain {
     // Hint: to make the subproblem smaller, make the String shorter!
     // Hint 2: multiple recursive cases might be helpful!
     public static int countX(String str) {
-        // YOUR CODE HERE
-        return -1;
+        // base case
+        if (str.length() == 0){
+            return 0;
+        }
+
+        // recursive call 1:
+        // if it doesn't start with x, ignore the first letter and check rest of letters
+        else if (str.charAt(0) != 'x') {
+            return countX(str.substring(1));
+        }
+        // if it does start with 'x'
+        else{
+            return 1 + countX(str.substring(1));
+        }
     }
 
 
@@ -54,8 +70,14 @@ public class MyMain {
     // exponent(5, 2) = 5 * 5 = 25
     // exponent(4, 0) = 1
     public static int exponent(int base, int power) {
-        // YOUR CODE HERE
-        return -1;
+        if (power == 0){
+            return 1;
+        }
+        else{
+            int x= exponent(base, power-1);
+            int ans = base * x;
+            return ans;
+        }
     }
 
     // Write a method that uses recursion to count the number
@@ -64,8 +86,18 @@ public class MyMain {
     // countHi("hix") => 1
     // countHi("hellohihi") => 2
     public static int countHi(String str) {
-        // YOUR CODE HERE
-        return -1;
+        if (str.length() < 2){
+            return 0;
+        }
+        else{
+            int x = countHi(str.substring(1));
+            int ans = x;
+            if ((str.substring(0,2)).equals("hi")){
+                ans = x + 1;
+            }
+            return ans;
+        }
+
     }
 
 
